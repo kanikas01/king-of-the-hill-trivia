@@ -35,6 +35,7 @@
 
 body {
   background-image: url("../images/fence-background-smaller-sharp.png");
+  box-sizing: border-box;
 }
 
 h1 {
@@ -47,4 +48,17 @@ h1 {
 
 .title {
   margin-top: 30px;
+}
+
+#start {
+  margin-top: 17rem;
+  text-align: center;
+}
+
+#start-button {
+  font-family: "King Of The Hill 2";
+  font-size: 3rem;
+  padding: 14px 40px;
+  border-radius: 6px;
+  border: 1px solid #000000;
 }
