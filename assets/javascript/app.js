@@ -50,26 +50,36 @@ $(document).ready(function () {
   // ---------- Define game object ---------- //
 
   var game = {
-    questionDiv: ("#question"),
+    timeRemainingDiv: $("#time-remaining"),
+    questionDiv: $("#question"),
+    choicesDiv: $("#choices"),
     correctAnswers: 0,
     incorrectAnswers: 0,
     questionsUnanswered: 0,
+    questionNumber: 0,
     questionsRemaining: questions.length,
+
     startGame: function(){
-      $("#start").css("display", "none");
-      for (var i = 0; i < questions.length; i++) {
-        this.questionsRemaining--;
+      // Hide start button the first time 
+      if (game.questionNumber === 0) {
+        $("#start").css("display", "none");
+      }
+
+      if (game.questionsRemaining) {
+        
         // start question countdown
         // display question and answers
-        var question = $("<h2>" + questions[i].prompt + "</h2>");
-        // question.text(questions[i].prompt);
-        question.appendTo("#question");
+        var question = $("<h2>");
+        question.text(questions[game.questionNumber].prompt);
+        question.appendTo(game.questionDiv);
         // console.log(question);
         // console.log(questions[i].prompt);
         // when user selects answer, check it
         // if no more questions, game over
         // else continue
       }
+      game.questionsRemaining--;
+      game.questionNumber++;
 
     },
 
