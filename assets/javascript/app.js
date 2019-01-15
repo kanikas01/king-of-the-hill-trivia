@@ -2,7 +2,8 @@
 // Gameplay can begin when DOM is loaded
 $(document).ready(function () {
 
-  // Define question objects
+  // ---------- Define question objects ---------- //
+
   questions = [{
     prompt: "What political party did Luanne support in the 2004 election?",
     possibleAnswers: ["The Democratic Party", "The Republican Party", "The Libertarian Party", "The Communist Party"],
@@ -46,31 +47,62 @@ $(document).ready(function () {
   }];
   
 
-  // Define game object
+  // ---------- Define game object ---------- //
+
   var game = {
     correctAnswers: 0,
     incorrectAnswers: 0,
     questionsUnanswered: 0,
     questionsRemaining: questions.length,
+    startGame: function(){
+      for (var i = 0; i < questions.length; i++) {
+        this.questionsRemaining--;
+        // display question and answers
+        // when user selects answer, check it
+        // if no more questions, game over
+        // else continue
+      }
+
+    },
+
+    checkAnswer: function() {
+      // if answer is correct, display success message
+      // if answer is incorrect, display failure message
+    },
+    
+    gameOver: function() {
+      // show final score
+      // show restart button
+    },
+    
+    restartGame: function() {
+    this.correctAnswers = 0;
+    this.incorrectAnswers = 0;
+    this.questionsUnanswered = 0;
+    this.questionsRemaining = questions.length;
+    this.startGame();
+    }
+
   };
 
   
-  var stuff = $("<img>", {
-    src: questions[7].gif
-  });
+  // var stuff = $("<img>", {
+  //   src: questions[7].gif
+  // });
 
-  stuff.appendTo("#start");
+  // stuff.appendTo("#start");
+
   
   // ---------- Event listeners ---------- //
 
-  // // Start button begins game
-  // $('#start-button').on('click', startGame);
+  // Start button begins game
+  $('#start-button').click(game.startGame);
 
-  // // possible answers: selects answer
-  // $('#possible-answers').on('click', '.choice', checkAnswer);
+  // possible answers: selects answer
+  $('#possible-answers').on('click', '.choice', game.checkAnswer);
 
-  // // Restart button restarts the game
-  // $('#reset').on('click', '#reset-button', restartGame);
+  // Restart button restarts the game
+  $('#reset').on('click', '#reset-button', game.restartGame);
 
 
   // // Choose your character and reposition all players
