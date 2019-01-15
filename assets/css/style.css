@@ -39,15 +39,12 @@ body {
 
 h1 {
   font-family: 'King Of The Hill 2';
-  font-size: 4rem;
+  font-size: 5rem;
   text-align: center;
   color: red;
   text-shadow: -4px 3px #000000;
 }
 
-h2 {
-  font-family: 'King Of The Hill';
-  font-size: 4rem;
-  text-align: center;
-  color: red;
+.title {
+  margin-top: 30px;
 }
