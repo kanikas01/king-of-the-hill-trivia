@@ -1,0 +1,43 @@
+/* Create column system */
+
+.col-1  { width: 8.33%  }
+.col-2  { width: 16.66% }
+.col-3  { width: 25%    }
+.col-4  { width: 33.33% }
+.col-5  { width: 41.66% }
+.col-6  { width: 50%    }
+.col-7  { width: 58.33% }
+.col-8  { width: 66.66% }
+.col-9  { width: 75%    }
+.col-10 { width: 83.33% }
+.col-11 { width: 91.66% }
+.col-12 { width: 100%   }
+
+/* END Create column system */
+
+@font-face {
+    font-family: 'King Of The Hill';
+    src: url('fonts/KingOfTheHill.woff2') format('woff2'),
+         url('fonts/KingOfTheHill.woff') format('woff'),
+         url('fonts/KingOfTheHill.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'King Of The Hill 2';
+    src: url('fonts/KingOfTheHill2.woff2') format('woff2'),
+         url('fonts/KingOfTheHill2.woff') format('woff'),
+         url('fonts/KingOfTheHill2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  background-image: url("../images/fence-background-smaller-sharp.png");
+}
+
+h1 {
+  font-family: 'King Of The Hill';
+  font-size: 4rem;
+}
