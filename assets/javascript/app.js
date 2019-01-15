@@ -15,11 +15,6 @@ $(document).ready(function () {
     correctAnswer: "Platter",
     gif: "assets/images/peggy-escuchame.gif"
   }, {
-    prompt: "What alias does Dale Gribble use most frequently?",
-    possibleAnswers: ["Joe Jack", "Dusty Hill", "Rusty Shackelford", "Gilbert Dauterive"],
-    correctAnswer: "Rusty Shackelford",
-    gif: "assets/images/dale-bathrobe.gif"
-  }, {
     prompt: "What does Dale Gribble call the van he uses for his extermination business?",
     possibleAnswers: ["The Queen Machine", "The Bugabago", "My Cadillac Car", "Lenore"],
     correctAnswer: "The Bugabago",
@@ -44,20 +39,33 @@ $(document).ready(function () {
     possibleAnswers: ["Mike Judge", "Stephen Root", "Trace Adkins", "Tom Petty"],
     correctAnswer: "Tom Petty",
     gif: "assets/images/lucky-slips.gif"
+  }, {
+    prompt: "What is Dale Gribble's preferred alias?",
+    possibleAnswers: ["Joe Jack", "Dusty Hill", "Rusty Shackelford", "Gilbert Dauterive"],
+    correctAnswer: "Rusty Shackelford",
+    gif: "assets/images/dale-bathrobe.gif"
   }];
   
 
   // ---------- Define game object ---------- //
 
   var game = {
+    questionDiv: ("#question"),
     correctAnswers: 0,
     incorrectAnswers: 0,
     questionsUnanswered: 0,
     questionsRemaining: questions.length,
     startGame: function(){
+      $("#start").css("display", "none");
       for (var i = 0; i < questions.length; i++) {
         this.questionsRemaining--;
+        // start question countdown
         // display question and answers
+        var question = $("<h2>" + questions[i].prompt + "</h2>");
+        // question.text(questions[i].prompt);
+        question.appendTo("#question");
+        // console.log(question);
+        // console.log(questions[i].prompt);
         // when user selects answer, check it
         // if no more questions, game over
         // else continue
@@ -99,7 +107,7 @@ $(document).ready(function () {
   $('#start-button').click(game.startGame);
 
   // possible answers: selects answer
-  $('#possible-answers').on('click', '.choice', game.checkAnswer);
+  $('#choices').on('click', '.choice', game.checkAnswer);
 
   // Restart button restarts the game
   $('#reset').on('click', '#reset-button', game.restartGame);
