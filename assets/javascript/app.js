@@ -58,34 +58,50 @@ $(document).ready(function () {
     questionsUnanswered: 0,
     questionNumber: 0,
     questionsRemaining: questions.length,
+    isRightAnswer: false,
 
     startGame: function(){
-      // Hide start button the first time 
+      // Hide start button when the first question is displayed 
       if (game.questionNumber === 0) {
         $("#start").css("display", "none");
       }
 
       if (game.questionsRemaining) {
-        
         // start question countdown
         // display question and answers
         var question = $("<h2>");
         question.text(questions[game.questionNumber].prompt);
         question.appendTo(game.questionDiv);
-        // console.log(question);
-        // console.log(questions[i].prompt);
+        var possibleAnswersLength = questions[game.questionNumber].possibleAnswers.length;
+        for (var i = 0; i < possibleAnswersLength; i++) {
+          var choice = $('<p class="choice">');
+          choice.text(questions[game.questionNumber].possibleAnswers[i]);
+          choice.appendTo(game.choicesDiv);
+        }
         // when user selects answer, check it
+
+        if (game.isRightAnswer) {
+          console.log("yay");
+        }
+        else {
+          console.log("boo");
+        }
         // if no more questions, game over
         // else continue
       }
-      game.questionsRemaining--;
-      game.questionNumber++;
+      // game.questionsRemaining--;
+      // game.questionNumber++;
 
     },
 
     checkAnswer: function() {
       // if answer is correct, display success message
       // if answer is incorrect, display failure message
+      game.isRightAnswer = false;
+      var chosenAnswer = $(this).text();
+      if (chosenAnswer === questions[game.questionNumber].correctAnswer) {
+        game.isRightAnswer = true;
+      }
     },
     
     gameOver: function() {
@@ -94,11 +110,12 @@ $(document).ready(function () {
     },
     
     restartGame: function() {
-    this.correctAnswers = 0;
-    this.incorrectAnswers = 0;
-    this.questionsUnanswered = 0;
-    this.questionsRemaining = questions.length;
-    this.startGame();
+    game.correctAnswers = 0;
+    game.incorrectAnswers = 0;
+    game.questionsUnanswered = 0;
+    game.questionsRemaining = questions.length;
+    game.questionNumber = 0;
+    game.startGame();
     }
 
   };
@@ -121,12 +138,5 @@ $(document).ready(function () {
 
   // Restart button restarts the game
   $('#reset').on('click', '#reset-button', game.restartGame);
-
-
-  // // Choose your character and reposition all players
-  // $(".character").click(chooseHero);
-
-  // // Choose opponent
-  // $('#enemies-available').on('click', '.enemy-character', chooseOpponent);
 
 });
