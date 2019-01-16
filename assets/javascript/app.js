@@ -2,7 +2,7 @@
 // Gameplay can begin when DOM is loaded
 $(document).ready(function () {
 
-  // ---------- Define question objects ---------- //
+  // ---------- Define an array of question objects ---------- //
 
   questions = [{
     prompt: "What is Peggy Hill's maiden name?",
@@ -128,13 +128,6 @@ $(document).ready(function () {
     }
 
   };
-
-  
-  // var stuff = $("<img>", {
-  //   src: questions[7].gif
-  // });
-
-  // stuff.appendTo("#start");
 
   
   // ---------- Event listeners ---------- //
