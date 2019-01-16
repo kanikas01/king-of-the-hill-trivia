@@ -60,7 +60,7 @@ $(document).ready(function () {
     questionsRemaining: questions.length,
     nextRoundDelay: 4500,
     timerStartValue: 5,
-    timerValue: 5,
+    timerValue: 0,
     intervalId: '',
     
     nextRound: function(){
@@ -70,8 +70,9 @@ $(document).ready(function () {
         $("#game-board").css("display", "inline");
       }
 
+      // Reset and display timer
       game.timerValue = game.timerStartValue;
-      game.timeRemainingDiv.html("<h2>" + game.timerValue + "</h2>");
+      game.timeRemainingDiv.html("<h2>Time remaining: " + game.timerValue + " seconds</h2>");
 
       if (game.questionsRemaining) {
         // start question countdown
@@ -116,7 +117,6 @@ $(document).ready(function () {
       game.questionsRemaining--;
       game.questionNumber++;
       
-
       // Display outcome and gif for several seconds, then continue 
       setTimeout(function() {
         game.questionDiv.empty();
@@ -137,24 +137,26 @@ $(document).ready(function () {
     },
 
     decrement: function() {
-
-      //  Decrease number by one.
+      //  Decrease timer by one and update on page
       game.timerValue--;
+      game.timeRemainingDiv.html("<h2>Time remaining: " + game.timerValue + " seconds</h2>");
 
-      //  Show the number on page
-      game.timeRemainingDiv.html("<h2>" + game.timerValue + "</h2>");
-
-
-      //  Once number hits zero...
+      //  Once timer hits zero...
       if (game.timerValue == 0) {
         clearInterval(game.intervalId);
+        // Increment questionsUnanswered
         game.questionsUnanswered++;
+
+        // Set outcome text and gif
         var correctAnswer = questions[game.questionNumber].correctAnswer;
         var outcome = $("<h3>");
         outcome.text(`Time's up! The correct answer was: ${correctAnswer}`);
+        var gif = $("<img>").attr("src", questions[game.questionNumber].gif);
+
+        // Hide timer, replace question and choices with outcome text and gif
+        game.timeRemainingDiv.html('');
         game.questionDiv.empty();
         game.choicesDiv.empty();
-        var gif = $("<img>").attr("src", questions[game.questionNumber].gif);
         outcome.appendTo(game.questionDiv);
         gif.appendTo(game.choicesDiv);
 
