@@ -51,6 +51,10 @@ h1 {
   text-shadow: -4px 3px #000000;
 }
 
+h3 {
+  padding-top: 10px;
+}
+
 img {
   width: 300px;
   height: 225;
