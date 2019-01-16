@@ -211,7 +211,7 @@ $(document).ready(function () {
   // Start button begins game
   $('#start-button').click(game.nextRound);
 
-  // possible answers: selects answer
+  // Clicking on an answer chooses and checks that answer
   $('#choices').on('click', '.choice', game.checkAnswer);
 
   // Restart button restarts the game
