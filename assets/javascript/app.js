@@ -58,12 +58,12 @@ $(document).ready(function () {
     questionsUnanswered: 0,
     questionNumber: 0,
     questionsRemaining: questions.length,
-    isRightAnswer: false,
 
-    startGame: function(){
-      // Hide start button when the first question is displayed 
+    nextRound: function(){
+      // Hide start button and show game board when the first question is displayed 
       if (game.questionNumber === 0) {
         $("#start").css("display", "none");
+        $("#game-board").css("display", "inline");
       }
 
       if (game.questionsRemaining) {
@@ -78,44 +78,53 @@ $(document).ready(function () {
           choice.text(questions[game.questionNumber].possibleAnswers[i]);
           choice.appendTo(game.choicesDiv);
         }
-        // when user selects answer, check it
-
-        if (game.isRightAnswer) {
-          console.log("yay");
-        }
-        else {
-          console.log("boo");
-        }
-        // if no more questions, game over
-        // else continue
       }
-      // game.questionsRemaining--;
-      // game.questionNumber++;
-
     },
 
     checkAnswer: function() {
       // if answer is correct, display success message
       // if answer is incorrect, display failure message
-      game.isRightAnswer = false;
       var chosenAnswer = $(this).text();
       if (chosenAnswer === questions[game.questionNumber].correctAnswer) {
-        game.isRightAnswer = true;
+        game.correctAnswers++;
+      }
+      else {
+        game.incorrectAnswers++;
+      }
+
+      game.questionsRemaining--;
+      game.questionNumber++;
+      game.questionDiv.empty();
+      game.choicesDiv.empty();
+
+      if (game.questionsRemaining) {
+        game.nextRound();
+      }
+      else {
+        game.gameOver();
       }
     },
     
     gameOver: function() {
-      // show final score
-      // show restart button
+      $("#game-board").css("display", "none");
+      $("#final-score").css("display", "inline");
+      // show final score and reset button
+      $("#correct-answers").text(`Correct answers: ${game.correctAnswers}`);
+      $("#incorrect-answers").text(`Incorrect answers: ${game.incorrectAnswers}`);
+      $("#unanswered").text(`Unanswered questions: ${game.questionsUnanswered}`);
     },
     
     restartGame: function() {
-    game.correctAnswers = 0;
-    game.incorrectAnswers = 0;
-    game.questionsUnanswered = 0;
-    game.questionsRemaining = questions.length;
-    game.questionNumber = 0;
-    game.startGame();
+      // Hide final score div
+      $("#final-score").css("display", "none");
+      // Reinitialize key variables
+      game.correctAnswers = 0;
+      game.incorrectAnswers = 0;
+      game.questionsUnanswered = 0;
+      game.questionsRemaining = questions.length;
+      game.questionNumber = 0;
+      
+      game.nextRound();
     }
 
   };
@@ -131,7 +140,7 @@ $(document).ready(function () {
   // ---------- Event listeners ---------- //
 
   // Start button begins game
-  $('#start-button').click(game.startGame);
+  $('#start-button').click(game.nextRound);
 
   // possible answers: selects answer
   $('#choices').on('click', '.choice', game.checkAnswer);
