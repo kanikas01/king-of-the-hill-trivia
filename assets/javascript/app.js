@@ -58,7 +58,7 @@ $(document).ready(function () {
     questionsUnanswered: 0,
     questionNumber: 0,
     questionsRemaining: questions.length,
-    newRoundDelay: 4500,
+    nextRoundDelay: 4500,
 
     nextRound: function(){
       // Hide start button and show game board when the first question is displayed 
@@ -118,7 +118,7 @@ $(document).ready(function () {
         else {
           game.gameOver();
         }
-      }, game.newRoundDelay);      
+      }, game.nextRoundDelay);      
     },
     
     gameOver: function() {
