@@ -67,7 +67,7 @@ $(document).ready(function () {
     intervalId: '',
     
 
-    // ---------- Object methods ---------- //
+    // ---------- Event handler methods ---------- //
 
     nextRound: function(){
       // Hide start button and show game board when the first question is displayed 
@@ -121,6 +121,22 @@ $(document).ready(function () {
       // Prepare for next round or end of game
       game.endRound();  
     },
+
+    restartGame: function () {
+      // Hide final score div
+      $("#final-score").css("display", "none");
+      // Reinitialize key variables
+      game.correctAnswers = 0;
+      game.incorrectAnswers = 0;
+      game.questionsUnanswered = 0;
+      game.questionsRemaining = questions.length;
+      game.questionNumber = 0;
+      // Restart game
+      game.nextRound();
+    },
+
+    
+    // ---------- Helper methods ---------- //
 
     startTimer: function() {
       game.timerValue = game.timerStartValue;
@@ -186,19 +202,6 @@ $(document).ready(function () {
       $("#correct-answers").text(`Correct answers: ${game.correctAnswers}`);
       $("#incorrect-answers").text(`Incorrect answers: ${game.incorrectAnswers}`);
       $("#unanswered").text(`Unanswered questions: ${game.questionsUnanswered}`);
-    },
-    
-    restartGame: function() {
-      // Hide final score div
-      $("#final-score").css("display", "none");
-      // Reinitialize key variables
-      game.correctAnswers = 0;
-      game.incorrectAnswers = 0;
-      game.questionsUnanswered = 0;
-      game.questionsRemaining = questions.length;
-      game.questionNumber = 0;
-      // Restart game
-      game.nextRound();
     }
   };
 
