@@ -39,7 +39,7 @@ body {
   font-family: "King of the Hill 2";
   font-size: 2rem;
   color: rgb(252, 255, 215) ;
-  text-shadow: -4px 4px black;
+  text-shadow: -2px 2px black;
   cursor: default;
 }
 
@@ -87,7 +87,7 @@ button {
 }
 
 #reset {
-  margin-top: 30px;
+  padding-top: 15px;
 }
 
 p {
@@ -97,6 +97,9 @@ p {
 
 p:hover {
   cursor: pointer;
-  color: rgb(255, 0, 0);
-  
+  color: rgb(248, 98, 98); 
+}
+
+#final-score div {
+  margin: 5px;
 }
