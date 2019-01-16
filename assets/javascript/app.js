@@ -84,25 +84,41 @@ $(document).ready(function () {
     checkAnswer: function() {
       // if answer is correct, display success message
       // if answer is incorrect, display failure message
+      var correctAnswer = questions[game.questionNumber].correctAnswer;
       var chosenAnswer = $(this).text();
-      if (chosenAnswer === questions[game.questionNumber].correctAnswer) {
+      var outcome = $("<h3>");
+      if (chosenAnswer === correctAnswer) {
         game.correctAnswers++;
+        // Let user know they got the answer right
+        outcome.text("Correct!");
       }
       else {
         game.incorrectAnswers++;
+        outcome.text(`Nope! The correct answer was: ${correctAnswer}`);
       }
 
-      game.questionsRemaining--;
-      game.questionNumber++;
+      // Replace question and choices with outcome text and
       game.questionDiv.empty();
       game.choicesDiv.empty();
+      var gif = $("<img>").attr("src", questions[game.questionNumber].gif);
+      outcome.appendTo(game.questionDiv);
+      gif.appendTo(game.choicesDiv);
 
-      if (game.questionsRemaining) {
-        game.nextRound();
-      }
-      else {
-        game.gameOver();
-      }
+      // Update values
+      game.questionsRemaining--;
+      game.questionNumber++;
+
+      // Display outcome and gif for several seconds, then continue 
+      setTimeout(function() {
+        game.questionDiv.empty();
+        game.choicesDiv.empty();
+        if (game.questionsRemaining) {
+          game.nextRound();
+        }
+        else {
+          game.gameOver();
+        }
+      }, 4000);      
     },
     
     gameOver: function() {
