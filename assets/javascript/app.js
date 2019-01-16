@@ -5,11 +5,6 @@ $(document).ready(function () {
   // ---------- Define question objects ---------- //
 
   questions = [{
-    prompt: "What political party did Luanne support in the 2004 election?",
-    possibleAnswers: ["The Democratic Party", "The Republican Party", "The Libertarian Party", "The Communist Party"],
-    correctAnswer: "The Communist Party",
-    gif: "assets/images/luanne-communist.gif"
-  }, {
     prompt: "What is Peggy Hill's maiden name?",
     possibleAnswers: ["Platter", "Gribble", "Pewterschmidt", "Bouvier"],
     correctAnswer: "Platter",
@@ -29,6 +24,11 @@ $(document).ready(function () {
     possibleAnswers: ["John Redcorn", "Bill Dautrive", "Principal Moss", "Hank Hill"],
     correctAnswer: "John Redcorn",
     gif: "assets/images/john-redcorn-nancy-dance.gif"
+  }, {
+    prompt: "What political party did Luanne support in the 2004 election?",
+    possibleAnswers: ["The Democratic Party", "The Republican Party", "The Libertarian Party", "The Communist Party"],
+    correctAnswer: "The Communist Party",
+    gif: "assets/images/luanne-communist.gif"
   }, {
     prompt: "What is Boomhauer's first name?",
     possibleAnswers: ["Charles", "Jeffery", "Buck", "Octavio"],
