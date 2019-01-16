@@ -36,6 +36,11 @@
 body {
   background-image: url("../images/fence-background-smaller-sharp.png");
   box-sizing: border-box;
+  font-family: "King of the Hill 2";
+  font-size: 2rem;
+  color: rgb(252, 255, 215) ;
+  text-shadow: -4px 4px black;
+  cursor: default;
 }
 
 h1 {
@@ -52,11 +57,12 @@ img {
 }
 
 .title {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 main {
   text-align: center;
+  margin-top: 150px;
 }
 
 #start {
@@ -64,10 +70,33 @@ main {
   text-align: center;
 }
 
-#start-button {
+#question {
+  padding-bottom: 30px;
+}
+
+button {
   font-family: "King Of The Hill 2";
   font-size: 3rem;
-  padding: 10px 20px;
+  padding: 5px 12px;
   border-radius: 6px;
   border: 1px solid #000000;
+}
+
+#game-board, #final-score {
+  display: none;
+}
+
+#reset {
+  margin-top: 30px;
+}
+
+p {
+  font-size: 1.75rem;
+  margin: 5px;
+}
+
+p:hover {
+  cursor: pointer;
+  color: rgb(255, 0, 0);
+  
 }
