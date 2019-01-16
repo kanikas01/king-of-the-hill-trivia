@@ -50,6 +50,9 @@ $(document).ready(function () {
   // ---------- Define game object ---------- //
 
   var game = {
+
+    // ---------- Object properties ---------- //
+
     timeRemainingDiv: $("#time-remaining"),
     questionDiv: $("#question"),
     choicesDiv: $("#choices"),
@@ -63,6 +66,9 @@ $(document).ready(function () {
     timerValue: 0,
     intervalId: '',
     
+
+    // ---------- Object methods ---------- //
+
     nextRound: function(){
       // Hide start button and show game board when the first question is displayed 
       if (game.questionNumber === 0) {
@@ -92,8 +98,8 @@ $(document).ready(function () {
 
     checkAnswer: function() {
       clearInterval(game.intervalId);
-      // if answer is correct, display success message
-      // if answer is incorrect, display failure message
+      // if answer is correct, set success message
+      // if answer is incorrect, set failure message
       var correctAnswer = questions[game.questionNumber].correctAnswer;
       var chosenAnswer = $(this).text();
       var outcome = $("<h3>");
@@ -106,28 +112,14 @@ $(document).ready(function () {
         outcome.text(`Nope! The correct answer was: ${correctAnswer}`);
       }
 
-      // Replace question and choices with outcome text and gif
-      game.questionDiv.empty();
-      game.choicesDiv.empty();
+      // Replace question and choices with outcome message and gif
+      game.clearGameBoard();
       var gif = $("<img>").attr("src", questions[game.questionNumber].gif);
       outcome.appendTo(game.questionDiv);
       gif.appendTo(game.choicesDiv);
 
-      // Update key variables
-      game.questionsRemaining--;
-      game.questionNumber++;
-      
-      // Display outcome and gif for several seconds, then continue 
-      setTimeout(function() {
-        game.questionDiv.empty();
-        game.choicesDiv.empty();
-        if (game.questionsRemaining) {
-          game.nextRound();
-        }
-        else {
-          game.gameOver();
-        }
-      }, game.nextRoundDelay);      
+      // Prepare for next round or end of game
+      game.endRound();  
     },
 
     startTimer: function() {
@@ -147,35 +139,44 @@ $(document).ready(function () {
         // Increment questionsUnanswered
         game.questionsUnanswered++;
 
-        // Set outcome text and gif
+        // Set outcome message and gif
         var correctAnswer = questions[game.questionNumber].correctAnswer;
         var outcome = $("<h3>");
         outcome.text(`Time's up! The correct answer was: ${correctAnswer}`);
         var gif = $("<img>").attr("src", questions[game.questionNumber].gif);
 
-        // Hide timer, replace question and choices with outcome text and gif
-        game.timeRemainingDiv.html('');
-        game.questionDiv.empty();
-        game.choicesDiv.empty();
+        // Hide timer, replace question and choices with outcome message and gif
+        game.clearGameBoard();
         outcome.appendTo(game.questionDiv);
         gif.appendTo(game.choicesDiv);
 
-        // Update key variables
-        game.questionsRemaining--;
-        game.questionNumber++;
-
-        // Display outcome and gif for several seconds, then continue 
-        setTimeout(function () {
-          game.questionDiv.empty();
-          game.choicesDiv.empty();
-          if (game.questionsRemaining) {
-            game.nextRound();
-          }
-          else {
-            game.gameOver();
-          }
-        }, game.nextRoundDelay); 
+        // Prepare for next round or end of game
+        game.endRound();
       }
+    },
+
+    endRound: function() {
+      // Update key variables
+      game.questionsRemaining--;
+      game.questionNumber++;
+
+      // Allow outcome and gif to display for several seconds, then continue 
+      setTimeout(function () {
+        game.questionDiv.empty();
+        game.choicesDiv.empty();
+        if (game.questionsRemaining) {
+          game.nextRound();
+        }
+        else {
+          game.gameOver();
+        }
+      }, game.nextRoundDelay); 
+    }, 
+    
+    clearGameBoard: function () {
+      game.timeRemainingDiv.empty();
+      game.questionDiv.empty();
+      game.choicesDiv.empty();
     },
     
     gameOver: function() {
@@ -199,7 +200,6 @@ $(document).ready(function () {
       // Restart game
       game.nextRound();
     }
-
   };
 
   
