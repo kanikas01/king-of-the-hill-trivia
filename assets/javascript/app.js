@@ -58,6 +58,7 @@ $(document).ready(function () {
     questionsUnanswered: 0,
     questionNumber: 0,
     questionsRemaining: questions.length,
+    newRoundDelay: 4500,
 
     nextRound: function(){
       // Hide start button and show game board when the first question is displayed 
@@ -68,7 +69,7 @@ $(document).ready(function () {
 
       if (game.questionsRemaining) {
         // start question countdown
-        // display question and answers
+        // display question and answer choices
         var question = $("<h2>");
         question.text(questions[game.questionNumber].prompt);
         question.appendTo(game.questionDiv);
@@ -89,7 +90,6 @@ $(document).ready(function () {
       var outcome = $("<h3>");
       if (chosenAnswer === correctAnswer) {
         game.correctAnswers++;
-        // Let user know they got the answer right
         outcome.text("Correct!");
       }
       else {
@@ -97,14 +97,14 @@ $(document).ready(function () {
         outcome.text(`Nope! The correct answer was: ${correctAnswer}`);
       }
 
-      // Replace question and choices with outcome text and
+      // Replace question and choices with outcome text and gif
       game.questionDiv.empty();
       game.choicesDiv.empty();
       var gif = $("<img>").attr("src", questions[game.questionNumber].gif);
       outcome.appendTo(game.questionDiv);
       gif.appendTo(game.choicesDiv);
 
-      // Update values
+      // Update key variables
       game.questionsRemaining--;
       game.questionNumber++;
 
@@ -118,13 +118,13 @@ $(document).ready(function () {
         else {
           game.gameOver();
         }
-      }, 4000);      
+      }, game.newRoundDelay);      
     },
     
     gameOver: function() {
+      // show final score and reset button
       $("#game-board").css("display", "none");
       $("#final-score").css("display", "inline");
-      // show final score and reset button
       $("#correct-answers").text(`Correct answers: ${game.correctAnswers}`);
       $("#incorrect-answers").text(`Incorrect answers: ${game.incorrectAnswers}`);
       $("#unanswered").text(`Unanswered questions: ${game.questionsUnanswered}`);
@@ -139,7 +139,7 @@ $(document).ready(function () {
       game.questionsUnanswered = 0;
       game.questionsRemaining = questions.length;
       game.questionNumber = 0;
-      
+      // Restart game
       game.nextRound();
     }
 
