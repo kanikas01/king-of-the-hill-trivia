@@ -69,7 +69,7 @@ $(document).ready(function () {
 
     // ---------- Event handler methods ---------- //
 
-    nextRound: function(){
+    nextRound() {
       // Hide start button and show game board when the first question is displayed 
       if (game.questionNumber === 0) {
         $("#start").css("display", "none");
@@ -96,7 +96,7 @@ $(document).ready(function () {
       }
     },
 
-    checkAnswer: function() {
+    checkAnswer() {
       clearInterval(game.intervalId);
       // if answer is correct, set success message
       // if answer is incorrect, set failure message
@@ -109,7 +109,7 @@ $(document).ready(function () {
       }
       else {
         game.incorrectAnswers++;
-        outcome.text(`Nope! The correct answer was: ${correctAnswer}`);
+        outcome.html(`Nope! The correct answer was:<br>${correctAnswer}`);
       }
 
       // Replace question and choices with outcome message and gif
@@ -122,7 +122,7 @@ $(document).ready(function () {
       game.endRound();  
     },
 
-    restartGame: function () {
+    restartGame() {
       // Hide final score div
       $("#final-score").css("display", "none");
       // Reinitialize key variables
@@ -138,13 +138,13 @@ $(document).ready(function () {
     
     // ---------- Helper methods ---------- //
 
-    startTimer: function() {
+    startTimer() {
       game.timerValue = game.timerStartValue;
       clearInterval(game.intervalId);
       game.intervalId = setInterval(game.decrement, 1000);
     },
 
-    decrement: function() {
+    decrement() {
       //  Decrease timer by one and update on page
       game.timerValue--;
       game.timeRemainingDiv.html("<h2>Time remaining: " + game.timerValue + " seconds</h2>");
@@ -158,7 +158,7 @@ $(document).ready(function () {
         // Set outcome message and gif
         var correctAnswer = questions[game.questionNumber].correctAnswer;
         var outcome = $("<h3>");
-        outcome.text(`Time's up! The correct answer was: ${correctAnswer}`);
+        outcome.html(`Time's up! The correct answer was:<br>${correctAnswer}`);
         var gif = $("<img>").attr("src", questions[game.questionNumber].gif);
 
         // Hide timer, replace question and choices with outcome message and gif
@@ -171,7 +171,7 @@ $(document).ready(function () {
       }
     },
 
-    endRound: function() {
+    endRound() {
       // Update key variables
       game.questionsRemaining--;
       game.questionNumber++;
@@ -189,13 +189,13 @@ $(document).ready(function () {
       }, game.nextRoundDelay); 
     }, 
     
-    clearGameBoard: function () {
+    clearGameBoard() {
       game.timeRemainingDiv.empty();
       game.questionDiv.empty();
       game.choicesDiv.empty();
     },
     
-    gameOver: function() {
+    gameOver() {
       // show final score and reset button
       $("#game-board").css("display", "none");
       $("#final-score").css("display", "inline");
