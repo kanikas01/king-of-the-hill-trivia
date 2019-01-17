@@ -31,8 +31,8 @@ $(document).ready(function () {
     gif: "assets/images/luanne-communist.gif"
   }, {
     prompt: "What is Boomhauer's first name?",
-    possibleAnswers: ["Charles", "Jeffery", "Buck", "Octavio"],
-    correctAnswer: "Jeffery",
+    possibleAnswers: ["Charles", "Jeffrey", "Buck", "Octavio"],
+    correctAnswer: "Jeffrey",
     gif: "assets/images/boomhauer-why.gif"
   }, {
     prompt: 'Who was the voice for Elroy "Lucky" Kleinschmidt?',
