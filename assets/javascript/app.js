@@ -62,7 +62,7 @@ $(document).ready(function () {
     questionNumber: 0,
     questionsRemaining: questions.length,
     nextRoundDelay: 4500,
-    timerStartValue: 5,
+    timerStartValue: 10,
     timerValue: 0,
     intervalId: '',
     
@@ -204,6 +204,7 @@ $(document).ready(function () {
       // show final score and reset button
       $("#game-board").css("display", "none");
       $("#final-score").css("display", "inline");
+      $("#message").text("All done, here's how you did:");
       $("#correct-answers").text(`Correct answers: ${game.correctAnswers}`);
       $("#incorrect-answers").text(`Incorrect answers: ${game.incorrectAnswers}`);
       $("#unanswered").text(`Unanswered questions: ${game.questionsUnanswered}`);
