@@ -147,7 +147,12 @@ $(document).ready(function () {
     decrement() {
       //  Decrease timer by one and update on page
       game.timerValue--;
-      game.timeRemainingDiv.html("<h2>Time remaining: " + game.timerValue + " seconds</h2>");
+      if (game.timerValue === 1) {
+        game.timeRemainingDiv.html("<h2>Time remaining: " + game.timerValue + " second &nbsp;</h2>");
+      }
+      else {
+        game.timeRemainingDiv.html("<h2>Time remaining: " + game.timerValue + " seconds</h2>");
+      } 
 
       //  Once timer hits zero...
       if (game.timerValue == 0) {
