@@ -35,7 +35,7 @@ $(document).ready(function () {
     correctAnswer: "Jeffrey",
     gif: "assets/images/boomhauer-why.gif"
   }, {
-    prompt: 'Who was the voice for Elroy "Lucky" Kleinschmidt?',
+    prompt: 'Who is the voice for Elroy "Lucky" Kleinschmidt?',
     possibleAnswers: ["Mike Judge", "Stephen Root", "Trace Adkins", "Tom Petty"],
     correctAnswer: "Tom Petty",
     gif: "assets/images/lucky-slips.gif"
