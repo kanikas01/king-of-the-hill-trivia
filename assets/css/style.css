@@ -57,7 +57,7 @@ main {
 }
 
 #start {
-  margin-top: 17rem;
+  margin-top: 10rem;
   text-align: center;
 }
 
@@ -67,6 +67,11 @@ main {
 
 #question, #time-remaining {
   padding-bottom: 15px;
+}
+
+.choice {
+  width: 50%;
+  margin: auto;
 }
 
 button {
