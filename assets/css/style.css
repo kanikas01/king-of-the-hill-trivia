@@ -76,6 +76,7 @@ main {
 
 button {
   font-family: "King Of The Hill 2";
+  background-color: white;
   font-size: 3rem;
   padding: 5px 12px;
   border-radius: 6px;
@@ -87,7 +88,7 @@ button {
 }
 
 #reset {
-  padding-top: 15px;
+  padding-top: 30px;
 }
 
 p {
