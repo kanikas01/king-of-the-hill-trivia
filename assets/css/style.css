@@ -41,7 +41,7 @@ h3 {
 img {
   width: 300px;
   height: 225px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   border-radius: 8px;
 }
 
@@ -83,7 +83,7 @@ button {
   border: 1px solid #000000;
 }
 
-#game-board, #final-score {
+#game-board, #final-score, #preload {
   display: none;
 }
 

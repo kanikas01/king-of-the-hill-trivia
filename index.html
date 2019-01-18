@@ -17,10 +17,12 @@
   </div>
 
   <main>
+    <!-- Start button -->
     <div id="start">
         <button id="start-button" type="button">Start!</button>
     </div>
 
+    <!-- Displays timer, question, choices and each round's results -->
     <div id="game-board">
       <div id="time-remaining"></div>
       <div id="question"></div>
@@ -28,6 +30,7 @@
       <div id="result"></div>
     </div>
 
+    <!-- Displays final outcome -->
     <div id="final-score">
       <div id="message"></div>
       <div id="correct-answers"></div>
@@ -38,9 +41,13 @@
       </div>
     </div>
 
+    <!-- Never displays, just used to pre-load images 
+      into the page so that gifs will display without 
+      any delay at the end of each round -->
+    <div id="preload"></div>
+    
   </main>
   
-
   <!-- Game code loads here -->
   <script src="assets/javascript/app.js"></script>
 </body>

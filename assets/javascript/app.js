@@ -56,6 +56,7 @@ $(document).ready(function () {
     timeRemainingDiv: $("#time-remaining"),
     questionDiv: $("#question"),
     choicesDiv: $("#choices"),
+    preloadDiv: $("#preload"),
     correctAnswers: 0,
     incorrectAnswers: 0,
     questionsUnanswered: 0,
@@ -72,6 +73,7 @@ $(document).ready(function () {
     nextRound() {
       // Hide start button and show game board when the first question is displayed 
       if (game.questionNumber === 0) {
+        game.preloadImages();
         $("#start").css("display", "none");
         $("#game-board").css("display", "inline");
       }
@@ -208,6 +210,13 @@ $(document).ready(function () {
       $("#correct-answers").text(`Correct answers: ${game.correctAnswers}`);
       $("#incorrect-answers").text(`Incorrect answers: ${game.incorrectAnswers}`);
       $("#unanswered").text(`Unanswered questions: ${game.questionsUnanswered}`);
+    },
+
+    preloadImages() {
+      for (var i = 0; i < questions.length; i++) {
+        var gif = $("<img>").attr("src", questions[i].gif);
+        gif.appendTo(game.preloadDiv);
+      }
     }
   };
 
