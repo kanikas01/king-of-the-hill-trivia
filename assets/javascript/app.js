@@ -66,6 +66,7 @@ $(document).ready(function () {
     timerStartValue: 10,
     timerValue: 0,
     intervalId: '',
+    areImagesLoaded: false,
     
 
     // ---------- Event handler methods ---------- //
@@ -73,9 +74,13 @@ $(document).ready(function () {
     nextRound() {
       // Hide start button and show game board when the first question is displayed 
       if (game.questionNumber === 0) {
-        game.preloadImages();
         $("#start").css("display", "none");
         $("#game-board").css("display", "inline");
+        // Pre-load gif images if they have not already been loaded
+        if (!game.areImagesLoaded) {
+          game.preloadImages();
+          game.areImagesLoaded = true;
+        }
       }
 
       // Reset and display timer
