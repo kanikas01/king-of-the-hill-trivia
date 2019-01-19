@@ -56,7 +56,6 @@ $(document).ready(function () {
     timeRemainingDiv: $("#time-remaining"),
     questionDiv: $("#question"),
     choicesDiv: $("#choices"),
-    preloadDiv: $("#preload"),
     correctAnswers: 0,
     incorrectAnswers: 0,
     questionsUnanswered: 0,
@@ -218,9 +217,14 @@ $(document).ready(function () {
     },
 
     preloadImages() {
+      // pre-load gifs in an invisible div so that they will
+      // display without any delay at the end of each round
+      var preloadDiv = $('<div id="preload">');
+      preloadDiv.css("display", "none");
       for (var i = 0; i < questions.length; i++) {
         var gif = $("<img>").attr("src", questions[i].gif);
-        gif.appendTo(game.preloadDiv);
+        gif.appendTo(preloadDiv);
+        preloadDiv.appendTo('main');
       }
     }
   };
