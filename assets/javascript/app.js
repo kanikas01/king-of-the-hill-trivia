@@ -45,17 +45,6 @@ $(document).ready(function () {
     correctAnswer: "Rusty Shackelford",
     gif: "assets/images/dale-bathrobe.gif"
   }];
-
-  // pre-load gifs in an invisible div so that they will
-  // display without any delay at the end of each round
-  var preloadDiv = $('<div id="preload">');
-  preloadDiv.css("display", "none");
-  for (var i = 0; i < questions.length; i++) {
-    var gif = $("<img>").attr("src", questions[i].gif);
-    gif.appendTo(preloadDiv);
-  }
-  preloadDiv.appendTo('main');
-  preloadDiv.before("<!-- Preload gif images -->");
   
 
   // ---------- Define game object ---------- //
@@ -217,9 +206,23 @@ $(document).ready(function () {
       $("#correct-answers").text(`Correct answers: ${game.correctAnswers}`);
       $("#incorrect-answers").text(`Incorrect answers: ${game.incorrectAnswers}`);
       $("#unanswered").text(`Unanswered questions: ${game.questionsUnanswered}`);
+    },
+
+    preloadImages() {
+      // pre-load gifs in an invisible div so that they will
+      // display without any delay at the end of each round
+      var preloadDiv = $('<div id="preload">');
+      preloadDiv.css("display", "none");
+      for (var i = 0; i < questions.length; i++) {
+        var gif = $("<img>").attr("src", questions[i].gif);
+        gif.appendTo(preloadDiv);
+      }
+      preloadDiv.appendTo('main');
+      preloadDiv.before("<!-- Preload gif images -->");
     }
   };
 
+  game.preloadImages();
   
   // ---------- Event listeners ---------- //
 
