@@ -45,6 +45,16 @@ $(document).ready(function () {
     correctAnswer: "Rusty Shackelford",
     gif: "assets/images/dale-bathrobe.gif"
   }];
+
+  // pre-load gifs in an invisible div so that they will
+  // display without any delay at the end of each round
+  var preloadDiv = $('<div id="preload">');
+  preloadDiv.css("display", "none");
+  for (var i = 0; i < questions.length; i++) {
+    var gif = $("<img>").attr("src", questions[i].gif);
+    gif.appendTo(preloadDiv);
+    preloadDiv.appendTo('main');
+  }
   
 
   // ---------- Define game object ---------- //
@@ -64,9 +74,7 @@ $(document).ready(function () {
     nextRoundDelay: 4500,
     timerStartValue: 10,
     timerValue: 0,
-    intervalId: '',
-    areImagesLoaded: false,
-    
+    intervalId: '',    
 
     // ---------- Event handler methods ---------- //
 
@@ -75,11 +83,6 @@ $(document).ready(function () {
       if (game.questionNumber === 0) {
         $("#start").css("display", "none");
         $("#game-board").css("display", "inline");
-        // Pre-load gif images if they have not already been loaded
-        if (!game.areImagesLoaded) {
-          game.preloadImages();
-          game.areImagesLoaded = true;
-        }
       }
 
       // Reset and display timer
@@ -165,7 +168,6 @@ $(document).ready(function () {
         clearInterval(game.intervalId);
         // Increment questionsUnanswered
         game.questionsUnanswered++;
-
         // Set outcome message and gif
         var correctAnswer = questions[game.questionNumber].correctAnswer;
         var outcome = $("<h3>");
@@ -214,18 +216,6 @@ $(document).ready(function () {
       $("#correct-answers").text(`Correct answers: ${game.correctAnswers}`);
       $("#incorrect-answers").text(`Incorrect answers: ${game.incorrectAnswers}`);
       $("#unanswered").text(`Unanswered questions: ${game.questionsUnanswered}`);
-    },
-
-    preloadImages() {
-      // pre-load gifs in an invisible div so that they will
-      // display without any delay at the end of each round
-      var preloadDiv = $('<div id="preload">');
-      preloadDiv.css("display", "none");
-      for (var i = 0; i < questions.length; i++) {
-        var gif = $("<img>").attr("src", questions[i].gif);
-        gif.appendTo(preloadDiv);
-        preloadDiv.appendTo('main');
-      }
     }
   };
 
