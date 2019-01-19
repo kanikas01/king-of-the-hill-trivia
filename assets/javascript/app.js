@@ -53,8 +53,8 @@ $(document).ready(function () {
   for (var i = 0; i < questions.length; i++) {
     var gif = $("<img>").attr("src", questions[i].gif);
     gif.appendTo(preloadDiv);
-    preloadDiv.appendTo('main');
   }
+  preloadDiv.appendTo('main');
   
 
   // ---------- Define game object ---------- //
