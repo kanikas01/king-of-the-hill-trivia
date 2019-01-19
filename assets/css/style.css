@@ -83,7 +83,7 @@ button {
   border: 1px solid #000000;
 }
 
-#game-board, #final-score, #preload {
+#game-board, #final-score {
   display: none;
 }
 
