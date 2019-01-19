@@ -55,6 +55,7 @@ $(document).ready(function () {
     gif.appendTo(preloadDiv);
   }
   preloadDiv.appendTo('main');
+  preloadDiv.before("<!-- Preload gif images -->");
   
 
   // ---------- Define game object ---------- //
