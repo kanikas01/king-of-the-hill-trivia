@@ -33,6 +33,12 @@ h1 {
   color: red;
   text-shadow: -4px 3px #000000;
 }
+span {
+  display: inline-block;
+  font-size: 2rem;
+  line-height: 0.82;
+  vertical-align: middle;
+}
 
 h3 {
   padding-top: 10px;
