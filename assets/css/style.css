@@ -55,7 +55,7 @@ main {
   text-align: center;
   width: 75%;
   margin: auto;
-  margin-top: 95px;
+  margin-top: 60px;
 }
 
 #start {
@@ -105,4 +105,11 @@ p:hover {
 
 #final-score div {
   margin: 5px;
+}
+
+@media screen and (max-width: 980px) {
+  .choice {
+    width: 100%;
+    margin: auto;
+  }
 }
