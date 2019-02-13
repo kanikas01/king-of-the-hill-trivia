@@ -40,10 +40,6 @@ span {
   vertical-align: middle;
 }
 
-h3 {
-  padding-top: 10px;
-}
-
 img {
   width: 300px;
   height: 225px;
@@ -52,18 +48,18 @@ img {
 }
 
 .title {
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 main {
   text-align: center;
   width: 75%;
   margin: auto;
-  margin-top: 120px;
+  margin-top: 95px;
 }
 
 #start {
-  margin-top: 10rem;
+  margin-top: 5rem;
   text-align: center;
 }
 
