@@ -1,5 +1,8 @@
 # TriviaGame
+
 Trivia game utilizing JavaScript and jQuery
+
+[Click here to view deployed project](https://kanikas01.github.io/TriviaGame/)
 
 This is a short trivia game based on the TV show "King of the Hill". Each question is timed, and at the end of the game the user is shown a summary screen with the number of correct, incorrect and unanswered questions.
 
