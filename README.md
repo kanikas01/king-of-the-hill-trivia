@@ -1,6 +1,4 @@
-# TriviaGame
-
-Trivia game utilizing JavaScript and jQuery
+# King of the Hill Trivia
 
 [Click here to view deployed project](https://kanikas01.github.io/TriviaGame/)
 
