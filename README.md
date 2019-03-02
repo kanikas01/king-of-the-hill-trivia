@@ -1,6 +1,6 @@
 # King of the Hill Trivia
 
-[Click here to view deployed project](https://kanikas01.github.io/TriviaGame/)
+[Click here to view deployed project](https://kanikas01.github.io/king-of-the-hill-trivia/)
 
 This is a short trivia game based on the TV show "King of the Hill". Each question is timed, and at the end of the game the user is shown a summary screen with the number of correct, incorrect and unanswered questions.
 
