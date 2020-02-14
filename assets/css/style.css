@@ -118,4 +118,9 @@ p:hover {
     cursor: pointer;
     color: rgb(244, 251, 172);
   }
+
+  p:active {
+    cursor: pointer;
+    color: rgb(248, 98, 98);
+  }
 }
