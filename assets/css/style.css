@@ -18,6 +18,8 @@
 
 body {
   background-image: url('../images/fence-background-smaller-sharp.png');
+  background-repeat: repeat-x;
+  background-color: #05924d;
   box-sizing: border-box;
   font-family: 'King of the Hill 2';
   font-size: 2rem;
